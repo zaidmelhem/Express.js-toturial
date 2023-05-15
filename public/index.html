@@ -1,0 +1,25 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo List</title>
+  </head>
+  <body>
+    <img src="/public/image.gif" alt="Server Image" />
+    <h1>Todo List</h1>
+    <ul id="todo-list"></ul>
+
+    <script>
+      const todoList = document.querySelector("#todo-list");
+      fetch("/todos")
+        .then((response) => response.json())
+        .then((data) => {
+          data.forEach((todo) => {
+            const li = document.createElement("li");
+            li.textContent = todo.title;
+            todoList.appendChild(li);
+          });
+        });
+    </script>
+  </body>
+</html>
